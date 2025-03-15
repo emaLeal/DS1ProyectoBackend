@@ -15,7 +15,7 @@ class User(AbstractUser):
     email = models.EmailField(max_length=100,unique=True, default="")
     is_active = models.BooleanField(default=True)
     address = models.CharField(max_length=200, default="")
-    role = models.ForeignKey(Role, on_delete=models.CASCADE, default=3)
+    role = models.ForeignKey(Role, on_delete=models.CASCADE, default=1)
     
     REQUIRED_FIELDS = [
         'name',

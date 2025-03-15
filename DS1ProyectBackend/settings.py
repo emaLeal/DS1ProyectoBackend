@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xl$&&3bwjgpcd21mx7p#l)u7+30my&1l%^hf6^**1cyj_uih&v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'users',
-    'role'
+    'role',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -50,7 +51,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:4200',
+)
 
 ROOT_URLCONF = 'DS1ProyectBackend.urls'
 
@@ -132,3 +139,9 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = "users.User"
+
+SIMPLE_JWT = {
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "USER_ID_FIELD": "document_id",
+
+}
