@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'users',
     'role',
+    'job_offer',
+    'postulant',
+    'postulation',
+    'talentDirector',
     'corsheaders'
 ]
 

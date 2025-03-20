@@ -4,3 +4,6 @@ from django.db import models
 class Role(models.Model):
     '''Model for the role the user will be asigned with'''
     description = models.CharField(max_length=20, default="Postulant")
+
+    class Meta:
+        db_table = "Role"

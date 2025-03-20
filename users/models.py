@@ -7,7 +7,8 @@ from django.utils.translation import gettext_lazy as _
 # Create your models here.
 class User(AbstractUser):
     '''Custom Model for an user in the platform, being admin, Human Managment's Director or Postulant'''
-    
+
+    username = None
     name = models.CharField(max_length=130, default="")
     last_name = models.CharField(max_length=130, default="")
     document_id = models.CharField(max_length=15, unique=True, default="", primary_key=True)
@@ -19,14 +20,17 @@ class User(AbstractUser):
     
     REQUIRED_FIELDS = [
         'name',
-        'last_name'
+        'last_name',
         'email',
         'phone',
         'role'
         ]
     USERNAME_FIELD = 'document_id'
     # objects = CustomUserManager()
-    
+
+    class Meta:
+        db_table = "User"
+        
     def __str__(self):
         return self.document_id
 
