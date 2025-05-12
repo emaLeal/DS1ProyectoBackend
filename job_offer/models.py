@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+from users.models import User
 from django.db import models
 
 class JobOffer(models.Model):
@@ -14,7 +13,7 @@ class JobOffer(models.Model):
     other_requirements = models.TextField()
     salary = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(max_length=20)
-    talent_director_document = models.CharField(max_length=15)
+    talent_director_document = models.ForeignKey(User, on_delete=models.CASCADE, to_field="document_id")
 
     class Meta:
         db_table = "JobOffer"

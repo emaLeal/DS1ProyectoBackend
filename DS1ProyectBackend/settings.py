@@ -45,9 +45,7 @@ INSTALLED_APPS = [
     'users',
     'role',
     'job_offer',
-    'postulant',
     'postulation',
-    'talentDirector',
     'corsheaders'
 ]
 
