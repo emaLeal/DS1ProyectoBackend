@@ -1,5 +1,4 @@
 from django.db import models
-from postulant.models import Postulant
 from job_offer.models import JobOffer
 from users.models import User
 # Create your models here.

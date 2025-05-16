@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny 
+from users.permissions import IsTalentDirector, IsAdminUser
 from .models import JobOffer
 from .serializers import JobOfferSerializer
 
@@ -38,7 +39,7 @@ def get_job_offer_by_id(request, id_ofer):
 
 # 3. Update a job offer by ID
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated,IsTalentDirector,IsAdminUser])
 def update_job_offer(request, id_ofer):
     """Updates an existing job offer."""
     try:
@@ -67,7 +68,7 @@ def delete_job_offer(request, id_ofer):
 
 # 5. Create a new job offer
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated, IsTalentDirector, IsAdminUser])
 def create_job_offer(request):
     # """Creates a new job offer."""
     serializer = JobOfferSerializer(data=request.data)

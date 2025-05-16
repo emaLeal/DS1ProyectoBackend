@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 # from decouple import config
-# import dj_database_url
+import dj_database_url
 # import os
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -44,9 +44,7 @@ INSTALLED_APPS = [
     'users',
     'role',
     'job_offer',
-    'postulant',
     'postulation',
-    'talentDirector',
     'corsheaders'
 ]
 
@@ -90,11 +88,18 @@ WSGI_APPLICATION = 'DS1ProyectBackend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default='postgresql://db1_zj3h_user:zBhFI5PAX5xGlfWt91EVzaCfjMc1eD9n@dpg-d0j27md6ubrc73br89ag-a.oregon-postgres.render.com/db1_zj3h'
+    )
 }
 
 # DATABASES = {
