@@ -17,6 +17,8 @@ class User(AbstractUser):
     is_active = models.BooleanField(default=True)
     address = models.CharField(max_length=200, default="")
     role = models.ForeignKey(Role, on_delete=models.CASCADE, default=1)
+    gender = models.CharField(max_length=10, default="")
+    identification_type = models.CharField(max_length=50, default="")
     
     REQUIRED_FIELDS = [
         'name',

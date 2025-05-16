@@ -5,4 +5,4 @@ class UserSerializer(serializers.ModelSerializer):
     '''User Serializer to return json'''
     class Meta:
         model = User
-        fields = ['name', 'last_name', 'phone','email','document_id', 'password','address']
+        fields = ['name', 'last_name', 'phone','email','document_id', 'gender','password','address']

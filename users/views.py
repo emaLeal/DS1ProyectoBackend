@@ -20,4 +20,19 @@ def register(request):
         return Response({'message': f'User {user} successfully created'}, status=201)
     return Response(serializer.errors, status=400)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_profile(request):
+    profile_user = request.user
+    profile_raw = {
+        'name': profile_user.name,
+        'last_name': profile_user.last_name,
+        'document_id': profile_user.document_id,
+        'role': profile_user.role_id,
+        'gender': profile_user.gender,
+        'email': profile_user.email,
+        'address': profile_user.address
+    }
+    return Response({'user': profile_raw}, status=200)
+
 

@@ -1,11 +1,12 @@
 from django.db import models
 from postulant.models import Postulant
 from job_offer.models import JobOffer
+from users.models import User
 # Create your models here.
 
 
 class Postulation(models.Model):
-    applicant_document = models.ForeignKey(Postulant, on_delete=models.CASCADE, to_field="document_id")
+    applicant_document = models.ForeignKey(User, on_delete=models.CASCADE, to_field="document_id")
     job_offer_id = models.ForeignKey(JobOffer, on_delete=models.CASCADE)
     undergraduate_title = models.TextField()
     postgraduate_title = models.TextField(null=True, blank=True)
