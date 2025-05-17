@@ -13,7 +13,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=130, default="")
     document_id = models.CharField(max_length=15, unique=True, default="", primary_key=True)
     phone = models.CharField(max_length=15, default="", blank=True)
-    email = models.EmailField(max_length=100,unique=True, default="")
+    email = models.EmailField(max_length=100,unique=False, default="")
     is_active = models.BooleanField(default=True)
     address = models.CharField(max_length=200, default="")
     role = models.ForeignKey(Role, on_delete=models.CASCADE, default=1)

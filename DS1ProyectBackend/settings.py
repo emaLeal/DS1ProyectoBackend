@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'corsheaders'
 ]
 
+AUTH_USER_MODEL = 'users.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -98,7 +100,7 @@ WSGI_APPLICATION = 'DS1ProyectBackend.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://db1_zj3h_user:zBhFI5PAX5xGlfWt91EVzaCfjMc1eD9n@dpg-d0j27md6ubrc73br89ag-a.oregon-postgres.render.com/db1_zj3h'
+        default='postgresql://uiserds1:GQMeIs3EH5XHd87YmxpdEM1OmRgKLJuV@dpg-d0kb83buibrs739cv050-a.oregon-postgres.render.com/db1_70uw'
     )
 }
 
@@ -158,7 +160,6 @@ REST_FRAMEWORK = {
     )
 }
 
-AUTH_USER_MODEL = "users.User"
 
 SIMPLE_JWT = {
     "AUTH_HEADER_TYPES": ("Bearer",),
