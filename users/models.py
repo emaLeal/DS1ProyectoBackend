@@ -25,7 +25,8 @@ class User(AbstractUser):
         'last_name',
         'email',
         'phone',
-        'role'
+        'role',
+        'gender'
         ]
     USERNAME_FIELD = 'document_id'
     # objects = CustomUserManager()
