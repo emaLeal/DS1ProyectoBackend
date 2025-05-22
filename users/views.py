@@ -1,8 +1,10 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from django.db.models import Q
 from .serializers import UserSerializer
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from .permissions import IsAdminUser
 
 User = get_user_model()
 
@@ -26,15 +28,12 @@ def register(request):
 @permission_classes([IsAuthenticated])
 def get_profile(request):
     profile_user = request.user
-    profile_raw = {
-        'name': profile_user.name,
-        'last_name': profile_user.last_name,
-        'document_id': profile_user.document_id,
-        'role': profile_user.role_id,
-        'gender': profile_user.gender,
-        'email': profile_user.email,
-        'address': profile_user.address
-    }
-    return Response({'user': profile_raw}, status=200)
+    serializer = UserSerializer(instance=profile_user)
+    return Response(serializer.data, status=200)
 
-
+@api_view(['GET'])
+@permission_classes([IsAdminUser])
+def get_users(request):
+    users = User.objects.filter(Q(role_id=1) | Q(role_id=2))
+    serializer = UserSerializer(instance=users, many=True)
+    return Response(serializer.data, status=200)

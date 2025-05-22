@@ -3,15 +3,15 @@ from rest_framework.permissions import BasePermission
 
 class IsAdminUser(BasePermission):
     def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.role.name == 'admin'
+        return request.user.is_authenticated and request.user.role.description == 'Administrador'
 
 class IsTalentDirector(BasePermission):
     def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.role.name == 'director_talento'
+        return request.user.is_authenticated and request.user.role.description == 'director_talento'
 
 class IsPostulant(BasePermission):
     def has_permission(self, request, view):
-        return request.user.is_authenticated and request.user.role.name == 'postulante'
+        return request.user.is_authenticated and request.user.role.description == 'postulante'
 
 class CanManageInternalUsers(BasePermission):
     def has_permission(self, request, view):
