@@ -18,8 +18,8 @@ def register(request):
     if serializer.is_valid():
         print("entro")
         serializer.save()
-        user = User.objects.get(document_id=serializer.data['document_id'])
-        user.set_password(serializer.data['password'])
+        user = User.objects.get(document_id=request.data['document_id'])
+        user.set_password(request.data['password'])
         user.save()
         return Response({'message': f'User {user} successfully created'}, status=201)
     return Response(serializer.errors, status=400)
@@ -32,7 +32,7 @@ def get_profile(request):
     return Response(serializer.data, status=200)
 
 @api_view(['GET'])
-@permission_classes([IsAdminUser])
+# @permission_classes([IsAdminUser])
 def get_users(request):
     users = User.objects.filter(Q(role_id=1) | Q(role_id=2))
     serializer = UserSerializer(instance=users, many=True)

@@ -18,7 +18,7 @@ class User(AbstractUser):
     is_active = models.BooleanField(default=True),
     birth_date = models.DateField(default='2000-01-01')
     address = models.CharField(max_length=200, default="")
-    role = models.ForeignKey(Role, on_delete=models.CASCADE, default=1)
+    role = models.ForeignKey(Role, on_delete=models.CASCADE, default=3)
     gender = models.CharField(max_length=10, default="")
     identification_type = models.CharField(max_length=50, default="")
     
@@ -27,7 +27,7 @@ class User(AbstractUser):
         'last_name',
         'email',
         'phone',
-        'role',
+        # 'role',
         'gender',
         'cell_phone',
         'birth_date'

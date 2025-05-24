@@ -3,7 +3,7 @@ from .models import User
 
 class UserSerializer(serializers.ModelSerializer):
     '''User Serializer to return json'''
-    role = serializers.CharField(source='role.description')
+    # role = serializers.CharField(source='role.description')
     class Meta:
         model = User
         fields = ['name',
@@ -16,6 +16,6 @@ class UserSerializer(serializers.ModelSerializer):
                   'address',
                   'identification_type',
                   'birth_date',
-                  'role'
+                #   'role'
                   ]
 
