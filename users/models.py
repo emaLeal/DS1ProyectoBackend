@@ -27,7 +27,7 @@ class User(AbstractUser):
         'last_name',
         'email',
         'phone',
-        # 'role',
+        'role',
         'gender',
         'cell_phone',
         'birth_date'
