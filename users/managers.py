@@ -5,7 +5,7 @@ class CustomUserManager(BaseUserManager):
     Custom user model manager where code is the unique identifiers
     for authentication instead of usernames.
     """
-    def create_user(self, document_id, name, last_name, phone, email, role, address, is_active, password):
+    def create_user(self, document_id, name, last_name, phone, email, role, gender,address, is_active, password):
         """
         Create and save a User with the given email and password.
         """
@@ -17,6 +17,7 @@ class CustomUserManager(BaseUserManager):
                           last_name=last_name, 
                           phone=phone, 
                           email=email,
+                          gender=gender,
                           role=role,
                           address=address,
                           is_active=is_active)
@@ -24,7 +25,7 @@ class CustomUserManager(BaseUserManager):
         user.save()
         return user    
     
-    def create_superuser(self, document_id, name, last_name, phone, email, role, address, password, is_active):
+    def create_superuser(self, document_id, name, last_name, phone, email, role, gender, address, password, is_active):
         """
         Create and save a SuperUser with the given email and password.
         """
@@ -32,4 +33,4 @@ class CustomUserManager(BaseUserManager):
 
         if role == 3:
             raise ValueError('User is not superuser')
-        return self.create_user(document_id, name, last_name, phone, email, role, address, is_active, password)    
+        return self.create_user(document_id, name, last_name, phone, email, gender, role, address, is_active, password)    
