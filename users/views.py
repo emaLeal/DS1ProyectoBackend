@@ -6,7 +6,7 @@ from django.db.models import Q
 from .serializers import UserSerializer
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .permissions import IsAdminUser
+from .permissions import IsAdminUser, IsTalentDirector
 from django.db import IntegrityError
 
 User = get_user_model()
@@ -34,7 +34,7 @@ def get_profile(request):
     return Response(serializer.data, status=200)
 
 @api_view(['GET'])
-# @permission_classes([IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser | IsTalentDirector])
 def get_users(request):
     users = User.objects.all()
     serializer = UserSerializer(instance=users, many=True)
