@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from role.models import Role
 
+
 class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Role
@@ -12,3 +13,4 @@ class RoleSerializer(serializers.ModelSerializer):
                 'read_only': False   # Permitir escribir el ID cuando se proporcione
             }
         }
+

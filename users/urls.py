@@ -12,4 +12,4 @@ urlpatterns = [
     path('users/getall/', views.get_users),
     path('update/<str:document_id>/', views.update_user),  # ✅ Corregido
     path('delete/<str:document_id>/', views.delete_user)   # ✅ Corregido
-]
+

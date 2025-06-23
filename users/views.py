@@ -2,12 +2,14 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status  # ✅ Agregado import
+
 from django.db.models import Q
 from .serializers import UserSerializer
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .permissions import IsAdminUser
 from django.db import IntegrityError
+
 
 User = get_user_model()
 
@@ -67,3 +69,4 @@ def delete_user(request, document_id):
         return Response({'detail': 'Usuario eliminado exitosamente'}, status=status.HTTP_200_OK)
     except IntegrityError as e:
         return Response({'detail': f'No se puede eliminar el usuario: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
+

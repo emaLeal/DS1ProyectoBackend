@@ -6,8 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
     role_description = serializers.CharField(source='role.description', read_only=True)
     class Meta:
         model = User
-        fields = [
-                    'name',
+        fields = ['name',
                   'last_name', 
                   'phone',
                   'cell_phone',

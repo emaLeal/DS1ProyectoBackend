@@ -34,3 +34,4 @@ class CustomUserManager(BaseUserManager):
         if role == 3:
             raise ValueError('User is not superuser')
         return self.create_user(document_id, name, last_name, phone, email, gender, role, address, is_active, password)    
+
