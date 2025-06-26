@@ -13,4 +13,4 @@ urlpatterns = [
     # path('create/', views.create_postulation),
     # path('update/<int:id>/', views.update_postulation),
     # path('delete/<int:id>/', views.delete_postulation),
-]
+
