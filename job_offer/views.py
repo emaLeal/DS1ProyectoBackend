@@ -68,7 +68,7 @@ def delete_job_offer(request, id_ofer):
 
 # 5. Create a new job offer
 @api_view(['POST'])
-@permission_classes([IsAuthenticated, IsTalentDirector, IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def create_job_offer(request):
     # """Creates a new job offer."""
     serializer = JobOfferSerializer(data=request.data)

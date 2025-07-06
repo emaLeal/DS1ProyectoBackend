@@ -17,7 +17,6 @@ User = get_user_model()
 @permission_classes([AllowAny])
 def register(request):
     '''Recieves the code and password from a user and returns a token'''
-    print(request.data)
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
         print("entro")
