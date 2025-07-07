@@ -12,7 +12,7 @@ class Postulation(models.Model):
     motivation = models.TextField()
     resume = models.TextField()
     phone = models.CharField(max_length=15)
-    application_date = models.DateField()
+    application_date = models.DateTimeField()
     
     class Meta:
         db_table = "Postulation"
