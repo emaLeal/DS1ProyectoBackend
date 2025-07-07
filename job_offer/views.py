@@ -39,7 +39,7 @@ def get_job_offer_by_id(request, id_ofer):
 
 # 3. Update a job offer by ID
 @api_view(['PUT'])
-@permission_classes([IsAuthenticated,IsTalentDirector,IsAdminUser])
+@permission_classes([IsAuthenticated, IsAdminUser])
 def update_job_offer(request, id_ofer):
     """Updates an existing job offer."""
     try:
