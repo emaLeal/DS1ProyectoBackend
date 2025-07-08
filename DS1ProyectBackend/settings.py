@@ -62,6 +62,8 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:4200',
+    'https://ds-1-proyecto-frontend.vercel.app'
+
 )
 
 ROOT_URLCONF = 'DS1ProyectBackend.urls'
