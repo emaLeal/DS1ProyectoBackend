@@ -23,9 +23,10 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
         'current_user': reset_password_token.user,
         'name': reset_password_token.user.name,
         'email': reset_password_token.user.email,
-        'reset_password_url': "{}?token={}".format(
-            instance.request.build_absolute_uri(reverse('password_reset:reset-password-confirm')),
-            reset_password_token.key)
+        # 'reset_password_url': "{}?token={}".format(
+        #     instance.request.build_absolute_uri(reverse('password_reset:reset-password-confirm')),
+        #     reset_password_token.key),
+        "reset_password_url": f"http://localhost:4200/change-password/{reset_password_token.key}"
     }
     print(context['reset_password_url'])
 
@@ -39,9 +40,9 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
         # message:
         email_plaintext_message,
         # from:
-        "emanuel.leal@correounivalle.edu.co",
+        "dsapp6393@gmail.com",
         # to:
-        ["lealemanuel0420@gmail.com"]
+        [reset_password_token.user.email]
     )
     msg.attach_alternative(email_html_message, "text/html")
     msg.send()
