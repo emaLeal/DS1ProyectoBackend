@@ -17,7 +17,8 @@ class UserSerializer(serializers.ModelSerializer):
                   'identification_type',
                   'birth_date',
                   'role',
-                  'role_description'
+                  'role_description',
+                  'date_joined'
                   ]
 
 class ChangePasswordSerializer(serializers.Serializer):
