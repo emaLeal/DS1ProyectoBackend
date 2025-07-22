@@ -11,9 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+
 # from decouple import config
 import dj_database_url
-# import os
+import os
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -170,3 +171,6 @@ EMAIL_USE_TLS = True  # Set to False if your email server doesn't use TLS
 EMAIL_HOST = 'smtp.gmail.com'  # Replace with your email host for gmail -> 'smtp.gmail.com'
 EMAIL_HOST_USER = 'dsapp6393@gmail.com'  # Replace with your email username
 EMAIL_HOST_PASSWORD = 'lrpo syfs kepm nrry'  # Replace with your email password
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'

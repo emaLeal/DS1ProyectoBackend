@@ -71,7 +71,7 @@ def delete_user(request, document_id):
         return Response({'detail': f'No se puede eliminar el usuario: {str(e)}'}, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAdminUser])
 def change_password(request):
     if request.method == 'POST':
         serializer = ChangePasswordSerializer(data=request.data)

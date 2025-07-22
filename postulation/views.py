@@ -28,12 +28,13 @@ def get_postulation_by_id(request, id):
 
 # Crear una nueva postulación
 @api_view(['POST'])
-# @permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def create_postulation(request):
     serializer = PostulationSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=201)
+    print(serializer.errors)
     return Response(serializer.errors, status=400)
 
 # Actualizar una postulación

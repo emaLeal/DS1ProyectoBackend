@@ -21,6 +21,7 @@ class UserSerializer(serializers.ModelSerializer):
                   ]
 
 class ChangePasswordSerializer(serializers.Serializer):
+    document_id = serializers.CharField(required=True)
     old_password = serializers.CharField(required=True)
     new_password = serializers.CharField(required=True)
 
